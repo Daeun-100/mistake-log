@@ -12,12 +12,12 @@ const TitleForm: React.FC<InputProps> = ({
   register,
   required,
 }: InputProps) => (
-  <div className="w-full font-semibold flex flex-col ">
-    <div>{label}</div>
+  <div className="w-full flex-col ">
+    <div className="font-semibold">{label}</div>
     <input
       {...register(label, { required })}
       placeholder="제목를 입력해주세요"
-      className="w-full border-b-2 border-gray-400 h-8 outline-none"
+      className="w-full border-b-2 border-gray-400 pl-2  pr-2 h-8 outline-none"
     ></input>
   </div>
 );

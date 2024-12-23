@@ -49,7 +49,6 @@ const WriteForm: React.FC = () => {
           <LabelRangeForm label="severity" register={register} />
           <LabelRangeForm label="frequency" register={register} />
         </div>
-        {errors.title && <div>{errors.title.message}</div>}
 
         <CategoryForm label="category" register={register} />
 
