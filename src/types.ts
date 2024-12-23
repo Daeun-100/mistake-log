@@ -1,5 +1,4 @@
 export type TextFormFields = {
-  cause: string;
   description: string;
   solution: string;
   insights: string;

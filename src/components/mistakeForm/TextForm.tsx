@@ -1,12 +1,24 @@
 import { Path, UseFormRegister } from 'react-hook-form';
 import { TextFormFields, FormFileds } from '../../types';
 //내용,해결방법,해결책, 느낀점
-//key : cause description solution insights
+//key :  description solution insights
 
 type InputProps = {
   label: Path<TextFormFields>;
   register: UseFormRegister<FormFileds>;
   required: string;
+};
+
+const heightVariant = {
+  small: 'h-20',
+  medium: 'h-40',
+};
+
+const matchHeight = (label: Path<TextFormFields>) => {
+  //description solution 은 medium insights는 small
+  if (label === 'description' || label === 'solution')
+    return heightVariant.medium;
+  return heightVariant.small;
 };
 
 const TextForm: React.FC<InputProps> = ({
@@ -15,10 +27,13 @@ const TextForm: React.FC<InputProps> = ({
   required,
 }: InputProps) => (
   <>
-    <div>{label}</div>
+    <div className="font-semibold mb-2">{label}</div>
     <textarea
       {...register(label, { required })}
       placeholder="텍스트를 입력해주세요"
+      className={`w-full resize-none border-b-2 border-gray-400 ${matchHeight(
+        label
+      )}`}
     ></textarea>
   </>
 );

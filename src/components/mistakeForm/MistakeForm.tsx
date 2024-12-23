@@ -32,7 +32,7 @@ const WriteForm: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="w-1/2 bg-slate-200">
       <input {...register('timestamp')} type="text" placeholder="타임스탬프" />
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <TitleForm
@@ -40,14 +40,12 @@ const WriteForm: React.FC = () => {
           register={register}
           required="제목은 필수입니다."
         />
+        <LabelRangeForm label="severity" register={register} />
+        <LabelRangeForm label="frequency" register={register} />
         {errors.title && <div>{errors.title.message}</div>}
 
         <CategoryForm label="category" register={register} />
-        <TextForm
-          label="cause"
-          register={register}
-          required="원인은 필수입니다."
-        />
+
         <TextForm
           label="description"
           register={register}
@@ -63,14 +61,12 @@ const WriteForm: React.FC = () => {
           register={register}
           required="느낀점은 필수입니다."
         />
-        <LabelRangeForm label="severity" register={register} />
-        <LabelRangeForm label="frequency" register={register} />
         <button disabled={isSubmitting} type="submit">
           {isSubmitting ? '로딩' : '저장'}
         </button>
         {errors.root && <div>{errors.root.message}</div>}
       </form>
-    </>
+    </div>
   );
 };
 
