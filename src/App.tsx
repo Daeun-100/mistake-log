@@ -1,8 +1,8 @@
-import './index.css';
+import MistakeForm from './components/mistakeForm/MistakeForm';
+
 const App: React.FC = () => (
   <>
-    <div className='bg-red-700 text-3xl'>
-      test</div>
+    <MistakeForm />
   </>
 );
 

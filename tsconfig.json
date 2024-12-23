@@ -1,15 +1,15 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
     "target": "ES6",
+    "jsx": "react-jsx",
     "module": "ES6", // 컴파일 후 생성될 파일이 사용하는 모듈 버전
-    "outDir": "dist/", // 파일이 생성될 폴더
+    "outDir": "./dist", // 컴파일된 파일은 dist 폴더에 저장
+    "rootDir": "./src", // 소스 파일은 src 폴더 기준
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": ["vite-plugin-svgr/client", "jest"],
-  }
+    "moduleResolution": "node",
+    "types": ["jest"]
+  },
+  "include": ["src/**/*.tsx", "src/**/*.ts"], // src 폴더의 모든 파일 포함
+  "exclude": ["node_modules", "dist"]
 }

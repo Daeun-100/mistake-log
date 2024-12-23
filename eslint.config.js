@@ -1,9 +1,6 @@
 import globals from 'globals';
-
 import pluginJs from '@eslint/js';
-
 import tseslint from 'typescript-eslint';
-
 import pluginReact from 'eslint-plugin-react';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -17,7 +14,7 @@ export default [
     rules: {
       quotes: ['error', 'single'],
       indent: ['error', 2],
-      semi: ['error', 'always'] ,
+      semi: ['error', 'always'],
       'max-len': ['error', { code: 80 }],
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
@@ -29,24 +26,26 @@ export default [
       'arrow-spacing': ['error', { before: true, after: true }],
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],
-      'key-spacing': ['error', { beforeColon: false , afterColon: true }],
-      'curly': ['error', 'multi-line'],
+      'key-spacing': ['error', { beforeColon: false, afterColon: true }],
+      curly: ['error', 'multi-line'],
       'comma-style': ['error', 'last'],
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
       ],
       'space-infix-ops': 'error',
-      'keyword-spacing': ['error', { 'before': true, 'after': true }],
+      'keyword-spacing': ['error', { before: true, after: true }],
       'no-multi-spaces': 'error',
-      'no-multiple-empty-lines': ['error', { 'max': 1 }],
+      'no-multiple-empty-lines': ['error', { max: 1 }],
       'func-call-spacing': ['error', 'never'],
-      'eqeqeq': ['error', 'always'],
     },
     settings: {
       react: {
         version: 'detect', // React 버전을 자동 감지
       },
     },
+  },
+  {
+    ignores: ['dist/**/*.js'], // dist 디렉터리 내부의 JS 파일 무시
   },
 ];
