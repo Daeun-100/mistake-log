@@ -27,11 +27,11 @@ const TextForm: React.FC<InputProps> = ({
   required,
 }: InputProps) => (
   <>
-    <div className="font-semibold mb-2">{label}</div>
+    <div className="font-semibold">{label}</div>
     <textarea
       {...register(label, { required })}
       placeholder="텍스트를 입력해주세요"
-      className={`w-full resize-none border-b-2 border-gray-400 ${matchHeight(
+      className={`w-full resize-none outline-none border-b-2 border-gray-400 ${matchHeight(
         label
       )}`}
     ></textarea>

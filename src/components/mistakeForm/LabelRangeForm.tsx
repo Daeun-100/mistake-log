@@ -12,9 +12,15 @@ const LabelRangeForm: React.FC<InputProps> = ({
   label,
   register,
 }: InputProps) => (
-  <>
-    <input {...register(label)} type="number" placeholder={label}></input>
-  </>
+  <div className="flex flex-1 gap-2">
+    <span>{label}</span>
+    <input
+      {...register(label)}
+      type="number"
+      placeholder={label}
+      className="w-full"
+    ></input>
+  </div>
 );
 
 export default LabelRangeForm;

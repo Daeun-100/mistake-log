@@ -12,10 +12,14 @@ const CategoryForm: React.FC<InputProps> = ({
   label,
   register,
 }: InputProps) => (
-  <>
+  <div className="flex gap-2">
     <div>{label}</div>
-    <input {...register(label)} placeholder="카테고리를 입력해주세요"></input>
-  </>
+    <input
+      {...register(label)}
+      className="w-full"
+      placeholder="카테고리를 입력해주세요"
+    ></input>
+  </div>
 );
 
 export default CategoryForm;

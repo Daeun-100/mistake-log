@@ -32,16 +32,23 @@ const WriteForm: React.FC = () => {
   };
 
   return (
-    <div className="w-1/2 bg-slate-200">
-      <input {...register('timestamp')} type="text" placeholder="타임스탬프" />
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
+    <div className="w-1/2 bg-slate-200 p-4">
+      <form className=" flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+        <input
+          {...register('timestamp')}
+          type="text"
+          placeholder="타임스탬프"
+          className="w-full border-b-2 border-gray-400 outline-none"
+        />
         <TitleForm
           label="title"
           register={register}
           required="제목은 필수입니다."
         />
-        <LabelRangeForm label="severity" register={register} />
-        <LabelRangeForm label="frequency" register={register} />
+        <div className="flex gap-2">
+          <LabelRangeForm label="severity" register={register} />
+          <LabelRangeForm label="frequency" register={register} />
+        </div>
         {errors.title && <div>{errors.title.message}</div>}
 
         <CategoryForm label="category" register={register} />
