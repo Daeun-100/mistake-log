@@ -38,6 +38,7 @@ export default [
       'no-multi-spaces': 'error',
       'no-multiple-empty-lines': ['error', { max: 1 }],
       'func-call-spacing': ['error', 'never'],
+      'react/prop-types': 'off',
     },
     settings: {
       react: {

@@ -3,14 +3,16 @@ export type TextFormFields = {
   solution: string;
   insights: string;
 };
-type otherFields = {
+export type LogItemFields = {
+  timestamp: string;
   title: string;
   category: string[];
-  timestamp: string;
+  favorite: boolean;
+};
+type otherFields = {
   severity: number;
   frequency: number;
   relatedMistakes?: number[];
-  favorite?: boolean; // 즐겨찾기
   status?: string; //  "archived"
 };
-export type FormFileds = TextFormFields & otherFields;
+export type FormFields = TextFormFields & LogItemFields & otherFields;

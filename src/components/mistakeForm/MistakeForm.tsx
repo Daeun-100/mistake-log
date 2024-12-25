@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import TextForm from './TextForm';
-import { FormFileds } from '../../types';
+import { FormFields } from '../../types';
 import TitleForm from './TitleForm';
 import CategoryForm from './CategoryForm';
 import LabelRangeForm from './LabelRangeForm';
@@ -11,14 +11,14 @@ const WriteForm: React.FC = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<FormFileds>({
+  } = useForm<FormFields>({
     defaultValues: {
       severity: 1,
       frequency: 1,
     },
   });
 
-  const onSubmit: SubmitHandler<FormFileds> = async (data) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       throw new Error('에러 발생');
