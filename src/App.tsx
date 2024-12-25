@@ -1,25 +1,11 @@
-import LogItem from './components/LogItem';
+import { Routes, Route } from 'react-router-dom';
+import TestPage from './pages/testPage';
 
 const App: React.FC = () => (
   <>
-    <LogItem
-      title="tsconfig type-props 관련 에러"
-      timestamp={new Date().toLocaleString()}
-      category={['config', 'build', 'typescript']}
-      favorite={true}
-    />
-    <LogItem
-      title="tsconfig type-props 관련 에러"
-      timestamp={new Date().toLocaleString()}
-      category={['config', 'build', 'typescript']}
-      favorite={false}
-    />
-    <LogItem
-      title="tsconfig type-props 관련 에러"
-      timestamp={new Date().toLocaleString()}
-      category={['config', 'build', 'typescript']}
-      favorite={true}
-    />
+    <Routes>
+      <Route path="/" element={<TestPage />} />
+    </Routes>
   </>
 );
 
