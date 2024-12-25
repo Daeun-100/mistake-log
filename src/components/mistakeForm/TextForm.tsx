@@ -16,8 +16,10 @@ const heightVariant = {
 
 const matchHeight = (label: Path<TextFormFields>) => {
   //description solution 은 medium insights는 small
-  if (label === 'description' || label === 'solution')
+  if (label === 'description' || label === 'solution') {
     return heightVariant.medium;
+  }
+
   return heightVariant.small;
 };
 
@@ -31,9 +33,8 @@ const TextForm: React.FC<InputProps> = ({
     <textarea
       {...register(label, { required })}
       placeholder="텍스트를 입력해주세요"
-      className={`w-full resize-none outline-none border-b-2 pl-2 pt-2 pr-2 border-gray-400 ${matchHeight(
-        label
-      )}`}
+      className={`w-full resize-none outline-none border-b-2 pl-2 pt-2 pr-2
+         border-gray-400 ${matchHeight(label)}`}
     ></textarea>
   </>
 );
