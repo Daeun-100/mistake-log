@@ -41,7 +41,7 @@ const mockDatalist: FormFields[] = [
 
 const ActiveListPage = () => {
   return (
-    <div className="flex flex-col items-center gap-4 p-4 pt-6">
+    <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
       <div className="w-80 border-2 bg-slate-300">로그 추가</div>
 
       <div className="bg-lime-500 flex justify-between w-full">

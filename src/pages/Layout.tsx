@@ -36,17 +36,23 @@ const Layout = () => {
         {/* Transition으로 메뉴 애니메이션 */}
         <Transition
           show={isShowing}
-          enter="transition-transform duration-500"
-          enterFrom="-translate-x-full"
-          enterTo="translate-x-0"
-          leave="transition-transform duration-500"
-          leaveFrom="translate-x-0"
-          leaveTo="-translate-x-full"
+          enter="transition-all duration-500"
+          enterFrom="w-0"
+          enterTo="w-32"
+          leave="transition-all duration-500"
+          leaveFrom="w-32"
+          leaveTo="w-0"
         >
-          <div className={`min-w-32 bg-red-600 `}>메뉴</div>
+          <div className={`w-32 bg-red-600`}>
+            <div className="whitespace-nowrap">메ㄴㅇㄹㄹ뉴</div>
+            <div className="whitespace-nowrap">
+              카테고ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㄴㅇㄹㄹ리
+            </div>
+            <div className="whitespace-nowrap">아카이ㄴㅇㄹㄴㅇㄹ브</div>
+          </div>
         </Transition>
 
-        <div className="w-full h-full">
+        <div className="flex-grow h-full bg-gray-200  transition-all duration-500">
           <Outlet />
         </div>
       </div>
