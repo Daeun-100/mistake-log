@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import MistakeForm from '../components/mistakeForm/MistakeForm';
 import { selectedIdAtom, logListAtom } from '../atom';
 import { useAtom } from 'jotai';
+import { set } from 'react-hook-form';
 
 const LogDetailPage: React.FC = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const LogDetailPage: React.FC = () => {
 
   const handleClickDelete = () => {
     setLogList(logList.filter((log) => log.id !== selectedId));
+    setSelectedId(null);
     navigate('/');
   };
 

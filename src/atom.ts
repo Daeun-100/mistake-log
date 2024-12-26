@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { FormFields } from './types';
 
 const mockDatalist: FormFields[] = [
@@ -45,4 +46,10 @@ const mockDatalist: FormFields[] = [
 
 export const logListAtom = atom<FormFields[]>(mockDatalist);
 
-export const selectedIdAtom = atom<number | null>(null);
+const storage = createJSONStorage<number | null>(() => sessionStorage);
+
+export const selectedIdAtom = atomWithStorage<number | null>(
+  'seletedId',
+  null,
+  storage
+);
