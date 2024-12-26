@@ -2,6 +2,7 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
+import pluginHtml from 'eslint-plugin-html';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -10,12 +11,13 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  pluginHtml.configs.recommended,
   {
     rules: {
       quotes: ['error', 'single'],
       indent: ['error', 2],
       semi: ['error', 'always'],
-      'max-len': ['error', { code: 80 }],
+      'max-len': ['error', { code: 80, ignorePattern: '<.*>' }],
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'comma-dangle': ['error', 'always-multiline'],

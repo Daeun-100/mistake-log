@@ -1,10 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import TestPage from './pages/testPage';
+import Layout from './pages/Layout';
+import ActiveListPage from './pages/ActiveListPage';
 
 const App: React.FC = () => (
   <>
     <Routes>
-      <Route path="/" element={<TestPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<ActiveListPage />} />
+      </Route>
     </Routes>
   </>
 );
