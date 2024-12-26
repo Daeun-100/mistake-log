@@ -15,6 +15,7 @@ const WriteForm: React.FC = () => {
     defaultValues: {
       severity: 1,
       frequency: 1,
+      status: 'active',
     },
   });
 
