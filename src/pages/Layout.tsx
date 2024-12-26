@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-import { Transition } from '@headlessui/react';
 import { useState, useEffect } from 'react';
 
 const Layout = () => {
@@ -33,24 +32,16 @@ const Layout = () => {
         >
           Toggle Menu
         </button>
-        {/* Transition으로 메뉴 애니메이션 */}
-        <Transition
-          show={isShowing}
-          enter="transition-all duration-500"
-          enterFrom="w-0"
-          enterTo="w-32"
-          leave="transition-all duration-500"
-          leaveFrom="w-32"
-          leaveTo="w-0"
+
+        <div
+          className={` bg-red-600 transition-all duration-200 ${
+            isShowing ? 'w-32' : 'w-0'
+          }`}
         >
-          <div className={`w-32 bg-red-600`}>
-            <div className="whitespace-nowrap">메ㄴㅇㄹㄹ뉴</div>
-            <div className="whitespace-nowrap">
-              카테고ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㄴㅇㄹㄹ리
-            </div>
-            <div className="whitespace-nowrap">아카이ㄴㅇㄹㄴㅇㄹ브</div>
-          </div>
-        </Transition>
+          <div className="whitespace-nowrap">메뉴</div>
+          <div className="whitespace-nowrap">카테고리</div>
+          <div className="whitespace-nowrap">아카이브</div>
+        </div>
 
         <div className="flex-grow h-full bg-gray-200  transition-all duration-500">
           <Outlet />

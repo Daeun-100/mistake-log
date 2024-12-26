@@ -11,7 +11,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
     "jotai": "^2.10.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

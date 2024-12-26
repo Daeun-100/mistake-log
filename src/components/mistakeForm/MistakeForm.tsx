@@ -13,6 +13,7 @@ const WriteForm: React.FC = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: {
+      favorite: false,
       severity: 1,
       frequency: 1,
       status: 'active',
