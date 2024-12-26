@@ -4,8 +4,14 @@ import { FormFields } from '../../types';
 import TitleForm from './TitleForm';
 import CategoryForm from './CategoryForm';
 import LabelRangeForm from './LabelRangeForm';
+import { logListAtom } from '../../atom';
+import { useAtom } from 'jotai';
 
-const WriteForm: React.FC = () => {
+type OwnProps = {
+  onClickSubmit: () => void;
+};
+
+const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -17,14 +23,19 @@ const WriteForm: React.FC = () => {
       severity: 1,
       frequency: 1,
       status: 'active',
+      category: [],
     },
   });
-
+  const [logList, setLogList] = useAtom(logListAtom);
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      throw new Error('에러 발생');
-      console.log(data);
+      const finalData = {
+        ...data,
+        timestamp: new Date(),
+      };
+      onClickSubmit();
+      setLogList([...logList, finalData]);
+      console.log(finalData);
     } catch (e) {
       setError('root', {
         type: 'manual',
@@ -39,7 +50,7 @@ const WriteForm: React.FC = () => {
         <input
           {...register('timestamp')}
           type="text"
-          placeholder="타임스탬프"
+          placeholder="12/26/2024"
           className="w-full border-b-2 border-gray-400 outline-none"
         />
         <TitleForm
@@ -78,4 +89,4 @@ const WriteForm: React.FC = () => {
   );
 };
 
-export default WriteForm;
+export default MistakeForm;

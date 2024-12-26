@@ -1,12 +1,22 @@
 import LogItem from '../components/LogItem';
 import { useAtom } from 'jotai';
 import { logListAtom } from '../atom';
+import { useState } from 'react';
+import MistakeFrom from '../components/mistakeForm/MistakeForm';
 
-const ActiveListPage = () => {
+type OwnProps = {
+  onClickAdd: () => void;
+};
+
+const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
   const [logList, setLogList] = useAtom(logListAtom);
+
+  const handleClickAdd = () => {};
   return (
     <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
-      <div className="w-80 border-2 bg-slate-300">로그 추가</div>
+      <div className="w-80 border-2 bg-slate-300" onClick={onClickAdd}>
+        로그 추가
+      </div>
 
       <div className="bg-lime-500 flex justify-between w-full">
         <div>검색바</div>
@@ -21,4 +31,4 @@ const ActiveListPage = () => {
   );
 };
 
-export default ActiveListPage;
+export default LogListPage;

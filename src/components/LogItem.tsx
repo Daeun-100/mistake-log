@@ -11,7 +11,7 @@ const LogItem: React.FC<LogItemFields> = ({
   // each props are used in the component by <div>{props}</div>
   <div className="flex justify-between items-center border-b-2 border-gray-400">
     <div className="flex flex-col pl-4">
-      <div>{timestamp}</div>
+      <div>{timestamp.toLocaleString()}</div>
       <div className="text-lg font-semibold ">{title}</div>
       <div>{category.join()}</div>
     </div>

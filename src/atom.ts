@@ -3,7 +3,7 @@ import { FormFields } from './types';
 
 const mockDatalist: FormFields[] = [
   {
-    timestamp: '2021-09-01',
+    timestamp: new Date('2021-09-01'),
     title: 'title1sdf',
     category: ['category1', 'category2'],
     favorite: true,
@@ -15,7 +15,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
-    timestamp: '2021-09-02',
+    timestamp: new Date('2021-09-02'),
     title: 'title2dfg',
     category: ['category2', 'category3'],
     favorite: false,
@@ -27,7 +27,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
-    timestamp: '2021-09-03',
+    timestamp: new Date('2021-09-03'),
     title: 'title3',
     category: ['category3', 'category4'],
     favorite: true,
