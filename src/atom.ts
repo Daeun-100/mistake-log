@@ -3,6 +3,7 @@ import { FormFields } from './types';
 
 const mockDatalist: FormFields[] = [
   {
+    id: 1,
     timestamp: new Date('2021-09-01'),
     title: 'title1sdf',
     category: ['category1', 'category2'],
@@ -15,6 +16,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
+    id: 2,
     timestamp: new Date('2021-09-02'),
     title: 'title2dfg',
     category: ['category2', 'category3'],
@@ -27,6 +29,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
+    id: 3,
     timestamp: new Date('2021-09-03'),
     title: 'title3',
     category: ['category3', 'category4'],
@@ -41,3 +44,5 @@ const mockDatalist: FormFields[] = [
 ];
 
 export const logListAtom = atom<FormFields[]>(mockDatalist);
+
+export const selectedIdAtom = atom<number | null>(null);

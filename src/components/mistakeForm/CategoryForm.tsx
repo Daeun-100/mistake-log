@@ -1,11 +1,11 @@
 import { UseFormRegister } from 'react-hook-form';
-import { FormFileds } from '../../types';
+import { FormFields } from '../../types';
 //내용,해결방법,해결책, 느낀점
 //key : cause description solution insights
 
 type InputProps = {
   label: 'category';
-  register: UseFormRegister<FormFileds>;
+  register: UseFormRegister<FormFields>;
 };
 
 const CategoryForm: React.FC<InputProps> = ({

@@ -1,41 +1,65 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { set, SubmitHandler, useForm } from 'react-hook-form';
 import TextForm from './TextForm';
-import { FormFields } from '../../types';
+import { DefaultValues, FormFields } from '../../types';
 import TitleForm from './TitleForm';
 import CategoryForm from './CategoryForm';
 import LabelRangeForm from './LabelRangeForm';
-import { logListAtom } from '../../atom';
+import { logListAtom, selectedIdAtom } from '../../atom';
 import { useAtom } from 'jotai';
+import { useLocation } from 'react-router-dom';
+import { DEFAULT_VALUES } from '../../Constants';
+import { useEffect, useState } from 'react';
 
 type OwnProps = {
   onClickSubmit: () => void;
 };
 
 const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
+  const [logList, setLogList] = useAtom(logListAtom);
+  const [selectedId, setSelectedId] = useAtom(selectedIdAtom);
+  const location = useLocation();
+
   const {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues: {
-      favorite: false,
-      severity: 1,
-      frequency: 1,
-      status: 'active',
-      category: [],
-    },
+    defaultValues: DEFAULT_VALUES,
   });
-  const [logList, setLogList] = useAtom(logListAtom);
+
+  useEffect(() => {
+    if (location.pathname.includes('detail')) {
+      //상세페이지, 수정할때 불러옴
+      const data = logList.find((log) => log.id === selectedId);
+
+      if (!data) {
+        console.error('선택된 로그가 없습니다.');
+        return;
+      }
+      reset(data);
+    }
+  }, []);
+
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       const finalData = {
         ...data,
         timestamp: new Date(),
       };
+
+      if (location.pathname.includes('detail')) {
+        const newLogList = logList.map((log) => {
+          if (log.id === selectedId) return finalData;
+          return log;
+        });
+        setLogList(newLogList);
+      } else {
+        setLogList([...logList, finalData]);
+      }
+
       onClickSubmit();
-      setLogList([...logList, finalData]);
-      console.log(finalData);
     } catch (e) {
       setError('root', {
         type: 'manual',

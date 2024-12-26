@@ -1,7 +1,7 @@
 import LogItem from '../components/LogItem';
 import { useAtom } from 'jotai';
 import { logListAtom } from '../atom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MistakeFrom from '../components/mistakeForm/MistakeForm';
 import LogListPage from './LogListPage';
 import LogAddPage from './LogAddPage';

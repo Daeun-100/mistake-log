@@ -1,9 +1,9 @@
 import { UseFormRegister } from 'react-hook-form';
-import { FormFileds } from '../../types';
+import { FormFields } from '../../types';
 
 type InputProps = {
   label: 'title';
-  register: UseFormRegister<FormFileds>;
+  register: UseFormRegister<FormFields>;
   required: string;
 };
 

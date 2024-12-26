@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "types": ["jest"]
+    "types": ["jest"],
+    "strict": true
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/vite-env.d.ts"], // src 폴더의 모든 파일 포함
   "exclude": ["node_modules", "dist"]

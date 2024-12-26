@@ -9,9 +9,9 @@ type OwnProps = {
 };
 
 const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const [logList, setLogList] = useAtom(logListAtom);
 
-  const handleClickAdd = () => {};
   return (
     <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
       <div className="w-80 border-2 bg-slate-300" onClick={onClickAdd}>
@@ -23,8 +23,8 @@ const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
         <div className="bg-slate-200">옵션</div>
       </div>
       <div className="w-full h-full">
-        {logList.map((data, index) => (
-          <LogItem key={index} {...data} />
+        {logList.map((data) => (
+          <LogItem key={data.id} {...data} />
         ))}
       </div>
     </div>

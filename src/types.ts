@@ -2,6 +2,7 @@
 //pick 함수를 사용해서 뽑아내기
 
 export type FormFields = {
+  id: number;
   timestamp: Date;
   title: string;
   category: string[];
@@ -23,5 +24,7 @@ export type TextFormFields = Pick<
 //LogItemFields도 위와 같이 Pick 함수를 사용해서 뽑아내기
 export type LogItemFields = Pick<
   FormFields,
-  'timestamp' | 'title' | 'category' | 'favorite'
+  'id' | 'timestamp' | 'title' | 'category' | 'favorite'
 >;
+//DefaultValues는 FormFields에서 어떤 key든 포함 가능
+export type DefaultValues = Partial<FormFields>;
