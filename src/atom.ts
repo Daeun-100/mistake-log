@@ -46,6 +46,8 @@ const mockDatalist: FormFields[] = [
 
 export const logListAtom = atom<FormFields[]>(mockDatalist);
 
+export const searchTextAtom = atom('');
+
 const storage = createJSONStorage<number | null>(() => sessionStorage);
 
 export const selectedIdAtom = atomWithStorage<number | null>(
