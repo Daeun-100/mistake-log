@@ -24,6 +24,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
     handleSubmit,
     setError,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: DEFAULT_VALUES,
@@ -44,6 +45,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
+      console.log(data);
       const finalData = {
         ...data,
         timestamp: new Date(),
@@ -87,7 +89,11 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           <LabelRangeForm label="frequency" register={register} />
         </div>
 
-        <CategoryForm label="category" register={register} />
+        <CategoryForm
+          label="category"
+          register={register}
+          setValue={setValue}
+        />
 
         <TextForm
           label="description"

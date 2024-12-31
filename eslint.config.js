@@ -1,18 +1,17 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import parser from '@typescript-eslint/parser';
 import pluginReact from 'eslint-plugin-react';
-import pluginHtml from 'eslint-plugin-html';
 
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  pluginHtml.configs.recommended,
   {
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    languageOptions: {
+      parser,
+      globals: globals.browser,
+    },
     rules: {
       quotes: ['error', 'single'],
       indent: ['error', 2],
@@ -34,6 +33,8 @@ export default [
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
+        { blankLine: 'always', prev: 'function', next: '*' },
+        { blankLine: 'always', prev: '*', next: 'function' },
       ],
       'space-infix-ops': 'error',
       'keyword-spacing': ['error', { before: true, after: true }],
@@ -48,7 +49,7 @@ export default [
       },
     },
   },
-  {
-    ignores: ['dist/**/*.js'], // dist 디렉터리 내부의 JS 파일 무시
-  },
+  pluginJs.configs.recommended,
+  tseslint.configs.recommended,
+  pluginReact.configs.recommended,
 ];

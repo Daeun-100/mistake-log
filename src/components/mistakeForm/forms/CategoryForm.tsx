@@ -1,23 +1,34 @@
-import { UseFormRegister } from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormFields } from '../../../types';
 import { useState } from 'react';
 import CategoryLabel from '../../category/CategoryLabel';
+import { categoryAtom } from '../../../atom';
+import { useAtom } from 'jotai';
 //내용,해결방법,해결책, 느낀점
 //key : cause description solution insights
 
 type InputProps = {
   label: 'category';
   register: UseFormRegister<FormFields>;
+  setValue: UseFormSetValue<FormFields>;
 };
 
 const CategoryForm: React.FC<InputProps> = ({
   label,
   register,
+  setValue,
 }: InputProps) => {
-  const [openCategory, setOpenCategory] = useState(false);
+  const [openCategory, setOpenCategory] = useState<boolean>(false);
+  const [category, setCategory] = useAtom(categoryAtom);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
 
   const handleOpenCategory = () => {
     setOpenCategory(!openCategory);
+  };
+
+  const handleClickCategory = (categoryName: string) => {
+    setSelectedCategory([...selectedCategory, categoryName]);
+    setValue('category', selectedCategory);
   };
 
   return (
@@ -31,29 +42,20 @@ const CategoryForm: React.FC<InputProps> = ({
           className=" flex flex-wrap absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px]  min-h-11 max-h-44 overflow-y-auto"
           style={{ width: 'calc(100% - 4rem)' }}
         >
-          <CategoryLabel categoryName="프론트엔드"></CategoryLabel>
-          <CategoryLabel categoryName="백엔드"></CategoryLabel>
-          <CategoryLabel categoryName="디자인"></CategoryLabel>
-          <CategoryLabel categoryName="기획"></CategoryLabel>
-          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
-          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
-          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
-          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
-          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-
-          <CategoryLabel categoryName="QA"></CategoryLabel>
-          <CategoryLabel categoryName="보안"></CategoryLabel>
+          {category.map((categoryName) => (
+            <CategoryLabel
+              key={categoryName}
+              categoryName={categoryName}
+              handleClickCategory={handleClickCategory}
+            ></CategoryLabel>
+          ))}
         </div>
       )}
       <input
         {...register(label)}
-        className="w-full pointer-events-none bg-slate-200"
-        placeholder="카테고리를 추가해주세요"
-      ></input>
+        className="w-full pointer-events-none bg-slate-200 hidden"
+      />
+      <div className="text-gray-500 mt-0.5">카테고리를 추가해주세요</div>
     </div>
   );
 };
