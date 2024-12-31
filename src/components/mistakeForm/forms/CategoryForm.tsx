@@ -35,7 +35,6 @@ const CategoryForm: React.FC<InputProps> = ({
     const newCategory = selectedCategory.filter(
       (category) => category !== categoryName
     );
-    console.log(newCategory);
     setSelectedCategory(newCategory);
     setValue('category', newCategory);
   };
