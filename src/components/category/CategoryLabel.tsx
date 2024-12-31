@@ -1,6 +1,7 @@
 type OwnProps = {
   categoryName: string;
-  handleClickCategory: (categoryName: string) => void;
+  handleClickCategory?: (categoryName: string) => void;
+  isSelected?: boolean;
 };
 
 type Color = {
@@ -24,15 +25,20 @@ const getColorByCategory = (name: string) => {
   return color[name] || 'bg-gray-50';
 };
 
-const CategoryLabel = ({ categoryName, handleClickCategory }: OwnProps) => {
+const CategoryLabel = ({
+  categoryName,
+  handleClickCategory,
+  isSelected = false,
+}: OwnProps) => {
   return (
     <div
-      className={`p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${getColorByCategory(
+      className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${getColorByCategory(
         categoryName
       )}`}
-      onClick={() => handleClickCategory(categoryName)}
+      onClick={() => handleClickCategory && handleClickCategory(categoryName)}
     >
-      {categoryName}
+      <div className="pr-2">{categoryName}</div>
+      {isSelected ? <div className="pr-1 relative -top-0.5">x</div> : null}
     </div>
   );
 };

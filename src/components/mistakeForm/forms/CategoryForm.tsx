@@ -39,7 +39,7 @@ const CategoryForm: React.FC<InputProps> = ({
       </div>
       {openCategory && (
         <div
-          className=" flex flex-wrap absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px]  min-h-11 max-h-44 overflow-y-auto"
+          className="flex flex-wrap absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px] min-h-11 max-h-44 overflow-y-auto z-50"
           style={{ width: 'calc(100% - 4rem)' }}
         >
           {category.map((categoryName) => (
@@ -55,7 +55,15 @@ const CategoryForm: React.FC<InputProps> = ({
         {...register(label)}
         className="w-full pointer-events-none bg-slate-200 hidden"
       />
-      <div className="text-gray-500 mt-0.5">카테고리를 추가해주세요</div>
+      <div className=" flex flex-wrap">
+        {selectedCategory.map((categoryName) => (
+          <CategoryLabel
+            key={categoryName}
+            categoryName={categoryName}
+            isSelected={true}
+          ></CategoryLabel>
+        ))}
+      </div>
     </div>
   );
 };
