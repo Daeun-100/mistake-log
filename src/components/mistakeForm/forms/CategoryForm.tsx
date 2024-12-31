@@ -28,21 +28,25 @@ const CategoryForm: React.FC<InputProps> = ({
       </div>
       {openCategory && (
         <div
-          className="absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px]   h-24 "
+          className=" flex flex-wrap absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px]  min-h-11 max-h-44 overflow-y-auto"
           style={{ width: 'calc(100% - 4rem)' }}
         >
-          카테고리 추가창
-          <div className="flex">
-            <CategoryLabel categoryName="프론트엔드"></CategoryLabel>
-            <CategoryLabel categoryName="백엔드"></CategoryLabel>
-            <CategoryLabel categoryName="디자인"></CategoryLabel>
-            <CategoryLabel categoryName="기획"></CategoryLabel>
-            <CategoryLabel categoryName="데브옵스"></CategoryLabel>
-            <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
-            <CategoryLabel categoryName="QA"></CategoryLabel>
-            <CategoryLabel categoryName="보안"></CategoryLabel>
-            <CategoryLabel categoryName="모바일 개발"></CategoryLabel>
-          </div>
+          <CategoryLabel categoryName="프론트엔드"></CategoryLabel>
+          <CategoryLabel categoryName="백엔드"></CategoryLabel>
+          <CategoryLabel categoryName="디자인"></CategoryLabel>
+          <CategoryLabel categoryName="기획"></CategoryLabel>
+          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
+          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
+          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
+          <CategoryLabel categoryName="데브옵스"></CategoryLabel>
+          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
+          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
+          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
+          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
+          <CategoryLabel categoryName="데이터 사이언스"></CategoryLabel>
+
+          <CategoryLabel categoryName="QA"></CategoryLabel>
+          <CategoryLabel categoryName="보안"></CategoryLabel>
         </div>
       )}
       <input

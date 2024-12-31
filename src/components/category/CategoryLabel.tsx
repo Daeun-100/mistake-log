@@ -39,7 +39,7 @@ const getColorByCategory = (name: string) => {
 const CategoryLabel = ({ categoryName }: OwnProps) => {
   return (
     <div
-      className={`p-1 h-8 m-1 whitespace-nowrap ${getColorByCategory(
+      className={`p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${getColorByCategory(
         categoryName
       )}`}
     >
