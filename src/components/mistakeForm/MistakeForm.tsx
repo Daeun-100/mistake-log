@@ -69,7 +69,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
   };
 
   return (
-    <div className="w-1/2 bg-slate-200 p-4">
+    <div className="w-1/2 bg-slate-200 p-4 min-w-form">
       <form className=" flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register('timestamp')}

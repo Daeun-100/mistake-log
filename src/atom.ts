@@ -44,6 +44,8 @@ const mockDatalist: FormFields[] = [
   },
 ];
 
+const deFaultCategory = ['시험', '프로젝트', '업무', '일상'];
+
 export const logListAtom = atom<FormFields[]>(mockDatalist);
 
 const storage = createJSONStorage<number | null>(() => sessionStorage);
@@ -53,3 +55,5 @@ export const selectedIdAtom = atomWithStorage<number | null>(
   null,
   storage
 );
+
+export const categoryAtom = atom(deFaultCategory);
