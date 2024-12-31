@@ -2,6 +2,7 @@ type OwnProps = {
   categoryName: string;
   handleClickCategory?: (categoryName: string) => void;
   isSelected?: boolean;
+  onClickDelete?: (categoryName: string) => void;
 };
 
 type Color = {
@@ -29,6 +30,7 @@ const CategoryLabel = ({
   categoryName,
   handleClickCategory,
   isSelected = false,
+  onClickDelete,
 }: OwnProps) => {
   return (
     <div
@@ -38,7 +40,14 @@ const CategoryLabel = ({
       onClick={() => handleClickCategory && handleClickCategory(categoryName)}
     >
       <div className="pr-2">{categoryName}</div>
-      {isSelected ? <div className="pr-1 relative -top-0.5">x</div> : null}
+      {isSelected ? (
+        <div
+          className="pr-1 relative -top-0.5"
+          onClick={() => onClickDelete && onClickDelete(categoryName)}
+        >
+          x
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -31,6 +31,15 @@ const CategoryForm: React.FC<InputProps> = ({
     setValue('category', selectedCategory);
   };
 
+  const handleClickDelete = (categoryName: string) => {
+    const newCategory = selectedCategory.filter(
+      (category) => category !== categoryName
+    );
+    console.log(newCategory);
+    setSelectedCategory(newCategory);
+    setValue('category', newCategory);
+  };
+
   return (
     <div className="flex gap-2 relative">
       <div>{label}</div>
@@ -61,6 +70,7 @@ const CategoryForm: React.FC<InputProps> = ({
             key={categoryName}
             categoryName={categoryName}
             isSelected={true}
+            onClickDelete={handleClickDelete}
           ></CategoryLabel>
         ))}
       </div>
