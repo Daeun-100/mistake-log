@@ -1,5 +1,5 @@
 import { Path, UseFormRegister } from 'react-hook-form';
-import { TextFormFields, FormFileds } from '../../types';
+import { TextFormFields, FormFileds } from '../../../types';
 //내용,해결방법,해결책, 느낀점
 //key :  description solution insights
 

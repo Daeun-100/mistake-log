@@ -1,9 +1,9 @@
 import { set, SubmitHandler, useForm } from 'react-hook-form';
-import TextForm from './TextForm';
+import TextForm from './forms/TextForm';
 import { DefaultValues, FormFields } from '../../types';
-import TitleForm from './TitleForm';
-import CategoryForm from './CategoryForm';
-import LabelRangeForm from './LabelRangeForm';
+import TitleForm from './forms/TitleForm';
+import CategoryForm from './forms/CategoryForm';
+import LabelRangeForm from './forms/LabelRangeForm';
 import { logListAtom, selectedIdAtom } from '../../atom';
 import { useAtom } from 'jotai';
 import { useLocation } from 'react-router-dom';
