@@ -89,3 +89,6 @@ export const deletedIdsAtom = atom<string[]>([]);
 
 //sort by favorite
 export const isSortingByFavoriteAtom = atom<boolean>(false);
+
+//sort by category
+export const sortedCategoryAtom = atom<string[]>([]);
