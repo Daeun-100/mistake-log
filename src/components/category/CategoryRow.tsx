@@ -1,6 +1,12 @@
 import { useAtom } from 'jotai';
-import { categoryListAtom, logListAtom, categoriesAtom } from '../../atom';
+import {
+  categoryListAtom,
+  logListAtom,
+  categoriesAtom,
+  recoloredCategoryNameAtom,
+} from '../../atom';
 import { useState, useRef, useEffect } from 'react';
+import Palete from '../palete/Palete';
 
 type OwnProps = {
   categoryName: string;
@@ -9,8 +15,12 @@ type OwnProps = {
 const CategoryRow: React.FC<OwnProps> = ({ categoryName }) => {
   const [categories, setCategories] = useAtom(categoriesAtom);
   const [logList, setLogList] = useAtom(logListAtom);
+  const [recoloredCategoryName, setRecoloredCategoryNameAtom] = useAtom(
+    recoloredCategoryNameAtom
+  );
   const [newCategoryName, setNewCategoryName] = useState(categoryName);
   const [isRenaming, setIsRenaming] = useState(false);
+  const [isRecloring, setIsRecoloring] = useState(false);
   const renameRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -26,6 +36,11 @@ const CategoryRow: React.FC<OwnProps> = ({ categoryName }) => {
 
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewCategoryName(e.target.value);
+  };
+
+  const handleClickRecolor = () => {
+    setRecoloredCategoryNameAtom(categoryName);
+    setIsRecoloring(!isRecloring);
   };
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -84,7 +99,8 @@ const CategoryRow: React.FC<OwnProps> = ({ categoryName }) => {
       </div>
       <div className="flex gap-2">
         <div className={`w-4 h-4 ${categories[categoryName].bg}`}></div>
-        <div>🎨</div>
+        <div onClick={handleClickRecolor}>🎨</div>
+        {isRecloring ? <Palete /> : null}
       </div>
     </div>
   );

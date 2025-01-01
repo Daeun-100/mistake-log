@@ -92,3 +92,5 @@ export const isSortingByFavoriteAtom = atom<boolean>(false);
 
 //sort by category
 export const sortedCategoryAtom = atom<string[]>([]);
+
+export const recoloredCategoryNameAtom = atom<string>('');

@@ -49,7 +49,7 @@ const Layout = () => {
           </Link>
         </div>
 
-        <div className="flex-grow h-full bg-gray-200  transition-all duration-500">
+        <div className="flex-grow h-full     transition-all duration-500">
           <Outlet />
         </div>
       </div>
