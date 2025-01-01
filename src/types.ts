@@ -2,7 +2,7 @@
 //pick 함수를 사용해서 뽑아내기
 
 export type FormFields = {
-  id: number;
+  id: string;
   timestamp: Date;
   title: string;
   category: string[];

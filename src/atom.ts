@@ -4,7 +4,7 @@ import { FormFields } from './types';
 
 const mockDatalist: FormFields[] = [
   {
-    id: 1,
+    id: 'sadfewf',
     timestamp: new Date('2021-09-01'),
     title: 'title1sdf',
     category: ['category1', 'category2'],
@@ -17,7 +17,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
-    id: 2,
+    id: 'fdgfghfgh',
     timestamp: new Date('2021-09-02'),
     title: 'title2dfg',
     category: ['category2', 'category3'],
@@ -30,7 +30,7 @@ const mockDatalist: FormFields[] = [
     status: 'active',
   },
   {
-    id: 3,
+    id: 'dfgehfgh',
     timestamp: new Date('2021-09-03'),
     title: 'title3',
     category: ['category3', 'category4'],
@@ -73,12 +73,16 @@ export const logListAtom = atom<FormFields[]>(mockDatalist);
 
 export const searchTextAtom = atom('');
 
-const storage = createJSONStorage<number | null>(() => sessionStorage);
+const storage = createJSONStorage<string | null>(() => sessionStorage);
 
-export const selectedIdAtom = atomWithStorage<number | null>(
+export const selectedIdAtom = atomWithStorage<string | null>(
   'seletedId',
   null,
   storage
 );
 
-export const categoryAtom = atom(deFaultCategory);
+export const categoryAtom = atom<string[]>(deFaultCategory);
+
+//delete 버튼 누른 상태인지
+export const isDeletingAtom = atom<boolean>(false);
+export const deletedIdsAtom = atom<string[]>([]);
