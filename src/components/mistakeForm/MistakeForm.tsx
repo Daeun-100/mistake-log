@@ -3,7 +3,6 @@ import TextForm from './forms/TextForm';
 import { DefaultValues, FormFields } from '../../types';
 import TitleForm from './forms/TitleForm';
 import CategoryForm from './forms/CategoryForm';
-import LabelRangeForm from './forms/LabelRangeForm';
 import { logListAtom, selectedIdAtom } from '../../atom';
 import { useAtom } from 'jotai';
 import { useLocation } from 'react-router-dom';
@@ -84,10 +83,6 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           register={register}
           required="제목은 필수입니다."
         />
-        <div className="flex gap-2">
-          <LabelRangeForm label="severity" register={register} />
-          <LabelRangeForm label="frequency" register={register} />
-        </div>
 
         <CategoryForm
           label="category"

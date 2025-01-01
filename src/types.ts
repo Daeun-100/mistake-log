@@ -10,8 +10,6 @@ export type FormFields = {
   description: string;
   solution: string;
   insights: string;
-  severity: number;
-  frequency: number;
   relatedMistakes?: number[];
   status: 'archived' | 'active';
 };

@@ -13,8 +13,6 @@ const mockDatalist: FormFields[] = [
     description: 'description1lsdkfjlsdkfjlsdkfjalsdkfjalsdfkjaldfkjaldkfjl',
     solution: 'solution1sdf.kjsdlfkjsdlfkjsldfkja',
     insights: 'insights1dfglkjfdlgkdjfgl',
-    severity: 1,
-    frequency: 1,
     status: 'active',
   },
   {
@@ -26,8 +24,6 @@ const mockDatalist: FormFields[] = [
     description: 'description2',
     solution: 'solution2',
     insights: 'insights2',
-    severity: 2,
-    frequency: 2,
     status: 'active',
   },
   {
@@ -39,8 +35,6 @@ const mockDatalist: FormFields[] = [
     description: 'description3',
     solution: 'solution3',
     insights: 'insights3',
-    severity: 3,
-    frequency: 3,
     status: 'active',
   },
 ];
