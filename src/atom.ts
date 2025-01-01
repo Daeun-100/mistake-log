@@ -80,8 +80,8 @@ export const selectedIdAtom = atomWithStorage<string | null>(
   storage
 );
 
-export const categoryAtom = atom((get) => Object.keys(get(categoryColorAtom)));
-export const categoryColorAtom = atom(category);
+export const categoryListAtom = atom((get) => Object.keys(get(categoriesAtom)));
+export const categoriesAtom = atom(category);
 
 //delete 버튼 누른 상태인지
 export const isDeletingAtom = atom<boolean>(false);

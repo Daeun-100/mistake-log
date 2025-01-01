@@ -1,12 +1,12 @@
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { categoryAtom, sortedCategoryAtom } from '../../atom';
+import { categoryListAtom, sortedCategoryAtom } from '../../atom';
 import CategoryLabel from '../category/CategoryLabel';
 import { set } from 'react-hook-form';
 
 const SortByCategory = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [category, setCategory] = useAtom(categoryAtom);
+  const [category, setCategory] = useAtom(categoryListAtom);
   const [sortedCategory, setSortedCategory] = useAtom(sortedCategoryAtom);
 
   const handleClick = () => {

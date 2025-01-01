@@ -2,7 +2,7 @@ import { set, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormFields } from '../../../types';
 import { useState } from 'react';
 import CategoryLabel from '../../category/CategoryLabel';
-import { categoryAtom } from '../../../atom';
+import { categoryListAtom } from '../../../atom';
 import { useAtom } from 'jotai';
 //내용,해결방법,해결책, 느낀점
 //key : cause description solution insights
@@ -18,7 +18,7 @@ const CategoryForm: React.FC<InputProps> = ({
   register,
   setValue,
 }: InputProps) => {
-  const [category, setCategory] = useAtom(categoryAtom);
+  const [category, setCategory] = useAtom(categoryListAtom);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [openCategory, setOpenCategory] = useState<boolean>(false);
   const [addCategory, setAddCategory] = useState<boolean>(false);

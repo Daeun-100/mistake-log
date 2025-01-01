@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { categoryColorAtom } from '../../atom';
+import { categoriesAtom } from '../../atom';
 import { useState } from 'react';
 
 type CategoryLabelType = 'selector' | 'display';
@@ -27,7 +27,7 @@ const CategoryLabel = ({
   type,
   alreadySelected,
 }: OwnProps) => {
-  const categoryColor = useAtom(categoryColorAtom)[0];
+  const categories = useAtom(categoriesAtom)[0];
   const [isSelected, setIsSelected] = useState(alreadySelected);
 
   const handleClickSelector = () => {
@@ -40,8 +40,8 @@ const CategoryLabel = ({
     <div
       className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${
         isSelected
-          ? categoryColor[categoryName].click
-          : categoryColor[categoryName].bg
+          ? categories[categoryName].click
+          : categories[categoryName].bg
       } `}
       onClick={handleClickSelector}
     >

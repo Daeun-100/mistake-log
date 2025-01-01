@@ -1,9 +1,9 @@
 import { useAtom } from 'jotai';
-import { categoryAtom } from '../atom';
+import { categoryListAtom } from '../atom';
 import CategoryRow from '../components/category/CategoryRow';
 
 const CategoryPage = () => {
-  const [category, setCategory] = useAtom(categoryAtom);
+  const [category, setCategory] = useAtom(categoryListAtom);
 
   return (
     <div>
