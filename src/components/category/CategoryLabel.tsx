@@ -1,48 +1,49 @@
 import { useAtom } from 'jotai';
 import { categoryColorAtom } from '../../atom';
-import classNames from 'classnames';
-type OwnProps = {
+import { useState } from 'react';
+
+type CategoryLabelType = 'selector' | 'display';
+type SelectorProps = {
+  type: 'selector';
   categoryName: string;
-  handleClickCategory?: (categoryName: string) => void;
-  isSelected?: boolean;
-  onClickDelete?: (categoryName: string) => void;
+  handleClickCategory: (categoryName: string) => void; // 필수
+  onClickDelete?: never; // 사용 불가
 };
 
-type Color = {
-  [key: string]: string;
+type DisplayProps = {
+  type: 'display';
+  categoryName: string;
+  handleClickCategory?: never; // 사용 불가
+  onClickDelete: (categoryName: string) => void; // 필수
 };
-
-const color: Color = {
-  프론트엔드: 'bg-red-50',
-  백엔드: 'bg-blue-50',
-  디자인: 'bg-green-50',
-  기획: 'bg-yellow-50',
-  데브옵스: 'bg-purple-50',
-  '데이터 사이언스': 'bg-orange-50',
-  QA: 'bg-pink-50',
-  보안: 'bg-teal-50',
-  '모바일 개발': 'bg-cyan-50',
-  '게임 개발': 'bg-indigo-50',
-};
-
-const getColorByCategory = (name: string) => {
-  return color[name] || 'bg-gray-50';
-};
+type OwnProps = SelectorProps | DisplayProps;
 
 const CategoryLabel = ({
   categoryName,
   handleClickCategory,
-  isSelected = false,
   onClickDelete,
+  type,
 }: OwnProps) => {
   const categoryColor = useAtom(categoryColorAtom)[0];
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleClickSelector = () => {
+    if (type === 'display') return;
+    setIsSelected(!isSelected);
+    handleClickCategory && handleClickCategory(categoryName);
+  };
+
   return (
     <div
-      className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${categoryColor[categoryName].bg}`}
-      onClick={() => handleClickCategory && handleClickCategory(categoryName)}
+      className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${
+        isSelected
+          ? categoryColor[categoryName].click
+          : categoryColor[categoryName].bg
+      } `}
+      onClick={handleClickSelector}
     >
       <div className="pr-2">{categoryName}</div>
-      {isSelected ? (
+      {type === 'display' ? (
         <div
           className="pr-1 relative -top-0.5"
           onClick={() => onClickDelete && onClickDelete(categoryName)}

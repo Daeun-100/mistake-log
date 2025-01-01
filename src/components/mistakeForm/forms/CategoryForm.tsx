@@ -72,8 +72,8 @@ const CategoryForm: React.FC<InputProps> = ({
           <CategoryLabel
             key={categoryName}
             categoryName={categoryName}
-            isSelected={true}
             onClickDelete={handleClickDelete}
+            type="display"
           ></CategoryLabel>
         ))}
       </div>
@@ -87,6 +87,7 @@ const CategoryForm: React.FC<InputProps> = ({
               key={categoryName}
               categoryName={categoryName}
               handleClickCategory={handleClickCategory}
+              type="selector"
             ></CategoryLabel>
           ))}
           <div className="bg-green-400">

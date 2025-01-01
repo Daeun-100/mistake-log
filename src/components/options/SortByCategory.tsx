@@ -40,6 +40,7 @@ const SortByCategory = () => {
                 <CategoryLabel
                   handleClickCategory={handleClickCategory}
                   categoryName={name}
+                  type="selector"
                 ></CategoryLabel>
               </div>
             );

@@ -45,34 +45,9 @@ const mockDatalist: FormFields[] = [
   },
 ];
 
-const deFaultCategory = [
-  '시험',
-  '프로젝트',
-  '업무',
-  '일상',
-  '프론트엔드',
-  '백엔드',
-  '디자인',
-  '기획',
-  '데브옵스',
-  '데이터 사이언스',
-  'QA',
-  '보안',
-  '모바일 개발',
-  '게임 개발',
-  'AI/머신러닝',
-  '블록체인',
-  '사물인터넷',
-  '클라우드 컴퓨팅',
-  '네트워크',
-  '시스템 엔지니어링',
-  '테크니컬 라이터',
-  '교육',
-];
-
 //deFaultCategory의 값들을 키로 갖고 value는 {bg:bg-색-50,click:bg-색-200}인 객체인 랜덤한 색인 객체 생성,atom 아니고 객체
 // getRandomColorClass 함수를 사용하지 않고 직접 지정
-const categoryColor: Record<string, { bg: string; click: string }> = {
+const category: Record<string, { bg: string; click: string }> = {
   시험: { bg: 'bg-red-50', click: 'bg-red-200' },
   프로젝트: { bg: 'bg-blue-50', click: 'bg-blue-200' },
   업무: { bg: 'bg-green-50', click: 'bg-green-200' },
@@ -97,6 +72,8 @@ const categoryColor: Record<string, { bg: string; click: string }> = {
   교육: { bg: 'bg-lightBlue-50', click: 'bg-lightBlue-200' },
 };
 
+const deFaultCategory = Object.keys(category);
+
 export const logListAtom = atom<FormFields[]>(mockDatalist);
 
 export const searchTextAtom = atom('');
@@ -110,7 +87,7 @@ export const selectedIdAtom = atomWithStorage<string | null>(
 );
 
 export const categoryAtom = atom<string[]>(deFaultCategory);
-export const categoryColorAtom = atom(categoryColor);
+export const categoryColorAtom = atom(category);
 
 //delete 버튼 누른 상태인지
 export const isDeletingAtom = atom<boolean>(false);
