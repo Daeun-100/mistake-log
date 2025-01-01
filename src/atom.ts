@@ -86,3 +86,6 @@ export const categoryAtom = atom<string[]>(deFaultCategory);
 //delete 버튼 누른 상태인지
 export const isDeletingAtom = atom<boolean>(false);
 export const deletedIdsAtom = atom<string[]>([]);
+
+//sort by favorite
+export const isSortingByFavoriteAtom = atom<boolean>(false);
