@@ -4,10 +4,10 @@ import { FormFields } from './types';
 
 const mockDatalist: FormFields[] = [
   {
-    id: 'sadfewf',
+    id: 'sdfsdf',
     timestamp: new Date('2021-09-01'),
     title: 'title1sdf',
-    category: ['category1', 'category2'],
+    category: ['프론트엔드', '데브옵스'],
     favorite: true,
     description: 'description1lsdkfjlsdkfjlsdkfjalsdkfjalsdfkjaldfkjaldkfjl',
     solution: 'solution1sdf.kjsdlfkjsdlfkjsldfkja',
@@ -20,7 +20,7 @@ const mockDatalist: FormFields[] = [
     id: 'fdgfghfgh',
     timestamp: new Date('2021-09-02'),
     title: 'title2dfg',
-    category: ['category2', 'category3'],
+    category: ['디자인', '기술'],
     favorite: false,
     description: 'description2',
     solution: 'solution2',
@@ -33,7 +33,7 @@ const mockDatalist: FormFields[] = [
     id: 'dfgehfgh',
     timestamp: new Date('2021-09-03'),
     title: 'title3',
-    category: ['category3', 'category4'],
+    category: ['백엔드', '프로젝트'],
     favorite: true,
     description: 'description3',
     solution: 'solution3',
@@ -86,3 +86,9 @@ export const categoryAtom = atom<string[]>(deFaultCategory);
 //delete 버튼 누른 상태인지
 export const isDeletingAtom = atom<boolean>(false);
 export const deletedIdsAtom = atom<string[]>([]);
+
+//sort by favorite
+export const isSortingByFavoriteAtom = atom<boolean>(false);
+
+//sort by category
+export const sortedCategoryAtom = atom<string[]>([]);
