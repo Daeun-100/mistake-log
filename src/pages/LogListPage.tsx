@@ -5,12 +5,16 @@ import {
   searchTextAtom,
   isDeletingAtom,
   deletedIdsAtom,
+  isSortingByFavoriteAtom,
+  sortedCategoryAtom,
 } from '../atom';
 import { useState } from 'react';
 import MistakeFrom from '../components/mistakeForm/MistakeForm';
 import SearchBar from '../components/SearchBar';
 import decomposeHangul from '../utils/decomposeHangul';
 import DeleteOption from '../components/options/DeleteOption';
+import SortByFavorite from '../components/options/SortByFavorite';
+import SortByCategory from '../components/options/SortByCategory';
 
 type OwnProps = {
   onClickAdd: () => void;
@@ -22,10 +26,23 @@ const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
   const [searchText, setSearchText] = useAtom<string>(searchTextAtom);
   const [isDeleting, setIsDeleting] = useAtom(isDeletingAtom);
   const [deletedIds, setDeletedIds] = useAtom(deletedIdsAtom);
+  const [isSortingByFavorite, setIsSortingByFavorite] = useAtom(
+    isSortingByFavoriteAtom
+  );
+  const [sortedCategory, setSortedCategory] = useAtom(sortedCategoryAtom);
 
   let filteredList = logList;
+
+  if (isSortingByFavorite) {
+    filteredList = filteredList.filter((log) => log.favorite);
+  }
+  if (sortedCategory.length > 0) {
+    filteredList = filteredList.filter((log) =>
+      sortedCategory.every((category) => log.category.includes(category))
+    );
+  }
   if (searchText !== '') {
-    filteredList = logList.filter((log) => {
+    filteredList = filteredList.filter((log) => {
       const decomposedTitle = decomposeHangul(log.title); // 제목 분해
       const decomposedSearchText = decomposeHangul(searchText); // 검색어 분해
       return decomposedTitle.includes(decomposedSearchText);
@@ -42,12 +59,13 @@ const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
   return (
     <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
       <div className="flex gap-2">
+        <SortByFavorite />
+        <SortByCategory />
         <div className="w-80  bg-slate-300" onClick={onClickAdd}>
           로그 추가
         </div>
         <DeleteOption />
         <div className="bg-pink-500 whitespace-nowrap">아카이브</div>
-        <div className="bg-pink-500 whitespace-nowrap">정렬</div>
       </div>
 
       <div className="flex justify-between w-full">

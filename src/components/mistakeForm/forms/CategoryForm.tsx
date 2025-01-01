@@ -43,8 +43,10 @@ const CategoryForm: React.FC<InputProps> = ({
   };
 
   const handleClickCategory = (categoryName: string) => {
-    setSelectedCategory([...selectedCategory, categoryName]);
-    setValue('category', selectedCategory);
+    const newCategory = [...selectedCategory, categoryName];
+    //state를 꼭 써야하나,,,?
+    setSelectedCategory(newCategory);
+    setValue('category', newCategory);
   };
 
   const handleClickDelete = (categoryName: string) => {
