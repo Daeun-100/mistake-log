@@ -1,4 +1,4 @@
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { set, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormFields } from '../../../types';
 import { useState } from 'react';
 import CategoryLabel from '../../category/CategoryLabel';
@@ -43,7 +43,14 @@ const CategoryForm: React.FC<InputProps> = ({
   };
 
   const handleClickCategory = (categoryName: string) => {
-    const newCategory = [...selectedCategory, categoryName];
+    let newCategory;
+    if (selectedCategory.includes(categoryName)) {
+      newCategory = selectedCategory.filter(
+        (category) => category !== categoryName
+      );
+    } else {
+      newCategory = [...selectedCategory, categoryName];
+    }
     //state를 꼭 써야하나,,,?
     setSelectedCategory(newCategory);
     setValue('category', newCategory);

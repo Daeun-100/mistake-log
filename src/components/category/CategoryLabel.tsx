@@ -29,8 +29,8 @@ const CategoryLabel = ({
 
   const handleClickSelector = () => {
     if (type === 'display') return;
-    setIsSelected(!isSelected);
     handleClickCategory && handleClickCategory(categoryName);
+    setIsSelected(!isSelected);
   };
 
   return (
