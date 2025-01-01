@@ -1,3 +1,6 @@
+import { useAtom } from 'jotai';
+import { categoryColorAtom } from '../../atom';
+import classNames from 'classnames';
 type OwnProps = {
   categoryName: string;
   handleClickCategory?: (categoryName: string) => void;
@@ -32,11 +35,10 @@ const CategoryLabel = ({
   isSelected = false,
   onClickDelete,
 }: OwnProps) => {
+  const categoryColor = useAtom(categoryColorAtom)[0];
   return (
     <div
-      className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${getColorByCategory(
-        categoryName
-      )}`}
+      className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${categoryColor[categoryName].bg}`}
       onClick={() => handleClickCategory && handleClickCategory(categoryName)}
     >
       <div className="pr-2">{categoryName}</div>

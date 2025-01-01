@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
 import { FormFields } from './types';
+import { getRandomColorClass } from './utils/getRandomColorClass';
 
 const mockDatalist: FormFields[] = [
   {
@@ -69,6 +70,33 @@ const deFaultCategory = [
   '교육',
 ];
 
+//deFaultCategory의 값들을 키로 갖고 value는 {bg:bg-색-50,click:bg-색-200}인 객체인 랜덤한 색인 객체 생성,atom 아니고 객체
+// getRandomColorClass 함수를 사용하지 않고 직접 지정
+const categoryColor: Record<string, { bg: string; click: string }> = {
+  시험: { bg: 'bg-red-50', click: 'bg-red-200' },
+  프로젝트: { bg: 'bg-blue-50', click: 'bg-blue-200' },
+  업무: { bg: 'bg-green-50', click: 'bg-green-200' },
+  일상: { bg: 'bg-yellow-50', click: 'bg-yellow-200' },
+  프론트엔드: { bg: 'bg-purple-50', click: 'bg-purple-200' },
+  백엔드: { bg: 'bg-indigo-50', click: 'bg-indigo-200' },
+  디자인: { bg: 'bg-pink-50', click: 'bg-pink-200' },
+  기획: { bg: 'bg-teal-50', click: 'bg-teal-200' },
+  데브옵스: { bg: 'bg-orange-50', click: 'bg-orange-200' },
+  '데이터 사이언스': { bg: 'bg-cyan-50', click: 'bg-cyan-200' },
+  QA: { bg: 'bg-lime-50', click: 'bg-lime-200' },
+  보안: { bg: 'bg-amber-50', click: 'bg-amber-200' },
+  '모바일 개발': { bg: 'bg-emerald-50', click: 'bg-emerald-200' },
+  '게임 개발': { bg: 'bg-fuchsia-50', click: 'bg-fuchsia-200' },
+  'AI/머신러닝': { bg: 'bg-rose-50', click: 'bg-rose-200' },
+  블록체인: { bg: 'bg-violet-50', click: 'bg-violet-200' },
+  사물인터넷: { bg: 'bg-sky-50', click: 'bg-sky-200' },
+  '클라우드 컴퓨팅': { bg: 'bg-blueGray-50', click: 'bg-blueGray-200' },
+  네트워크: { bg: 'bg-warmGray-50', click: 'bg-warmGray-200' },
+  '시스템 엔지니어링': { bg: 'bg-trueGray-50', click: 'bg-trueGray-200' },
+  '테크니컬 라이터': { bg: 'bg-coolGray-50', click: 'bg-coolGray-200' },
+  교육: { bg: 'bg-lightBlue-50', click: 'bg-lightBlue-200' },
+};
+
 export const logListAtom = atom<FormFields[]>(mockDatalist);
 
 export const searchTextAtom = atom('');
@@ -82,6 +110,7 @@ export const selectedIdAtom = atomWithStorage<string | null>(
 );
 
 export const categoryAtom = atom<string[]>(deFaultCategory);
+export const categoryColorAtom = atom(categoryColor);
 
 //delete 버튼 누른 상태인지
 export const isDeletingAtom = atom<boolean>(false);

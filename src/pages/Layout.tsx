@@ -34,7 +34,7 @@ const Layout = () => {
         </button>
 
         <div
-          className={`flex flex-col bg-red-600 transition-all duration-200 ${
+          className={`flex flex-col bg-red-600 transition-all duration-200  bg-${
             isShowing ? 'w-32' : 'w-0'
           }`}
         >
