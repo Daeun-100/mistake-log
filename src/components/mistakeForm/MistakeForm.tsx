@@ -1,9 +1,9 @@
 import { set, SubmitHandler, useForm } from 'react-hook-form';
-import TextForm from './TextForm';
+import TextForm from './forms/TextForm';
 import { DefaultValues, FormFields } from '../../types';
-import TitleForm from './TitleForm';
-import CategoryForm from './CategoryForm';
-import LabelRangeForm from './LabelRangeForm';
+import TitleForm from './forms/TitleForm';
+import CategoryForm from './forms/CategoryForm';
+import LabelRangeForm from './forms/LabelRangeForm';
 import { logListAtom, selectedIdAtom } from '../../atom';
 import { useAtom } from 'jotai';
 import { useLocation } from 'react-router-dom';
@@ -24,6 +24,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
     handleSubmit,
     setError,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: DEFAULT_VALUES,
@@ -44,6 +45,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
+      console.log(data);
       const finalData = {
         ...data,
         timestamp: new Date(),
@@ -69,7 +71,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
   };
 
   return (
-    <div className="w-1/2 bg-slate-200 p-4">
+    <div className="w-1/2 bg-slate-200 p-4 min-w-form">
       <form className=" flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register('timestamp')}
@@ -87,7 +89,11 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           <LabelRangeForm label="frequency" register={register} />
         </div>
 
-        <CategoryForm label="category" register={register} />
+        <CategoryForm
+          label="category"
+          register={register}
+          setValue={setValue}
+        />
 
         <TextForm
           label="description"

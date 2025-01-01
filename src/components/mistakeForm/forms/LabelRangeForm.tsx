@@ -1,25 +1,26 @@
 import { UseFormRegister } from 'react-hook-form';
-import { FormFields } from '../../types';
+import { FormFields } from '../../../types.js';
 //내용,해결방법,해결책, 느낀점
 //key : cause description solution insights
 
 type InputProps = {
-  label: 'category';
+  label: 'severity' | 'frequency';
   register: UseFormRegister<FormFields>;
 };
 
-const CategoryForm: React.FC<InputProps> = ({
+const LabelRangeForm: React.FC<InputProps> = ({
   label,
   register,
 }: InputProps) => (
-  <div className="flex gap-2">
-    <div>{label}</div>
+  <div className="flex flex-1 gap-2">
+    <span>{label}</span>
     <input
       {...register(label)}
+      type="number"
+      placeholder={label}
       className="w-full"
-      placeholder="카테고리를 입력해주세요"
     ></input>
   </div>
 );
 
-export default CategoryForm;
+export default LabelRangeForm;
