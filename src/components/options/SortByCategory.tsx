@@ -14,7 +14,11 @@ const SortByCategory = () => {
   };
 
   const handleClickCategory = (name: string) => {
-    setSortedCategory([...sortedCategory, name]);
+    if (sortedCategory.includes(name)) {
+      setSortedCategory(sortedCategory.filter((category) => category !== name));
+    } else {
+      setSortedCategory([...sortedCategory, name]);
+    }
   };
 
   const handleClickNone = () => {
