@@ -37,7 +37,8 @@ const CategoryForm: React.FC<InputProps> = ({
   };
 
   const handleClickAddButton = () => {
-    setCategory([...category, addCategoryName]);
+    // setCategoryColor로 바꿔야함
+    // setCategory([...category, addCategoryName]);
     setAddCategoryName('');
     setAddCategory(false);
   };

@@ -42,28 +42,28 @@ const mockDatalist: FormFields[] = [
 //deFaultCategory의 값들을 키로 갖고 value는 {bg:bg-색-50,click:bg-색-200}인 객체인 랜덤한 색인 객체 생성,atom 아니고 객체
 // getRandomColorClass 함수를 사용하지 않고 직접 지정
 const category: Record<string, { bg: string; click: string }> = {
-  시험: { bg: 'bg-red-50', click: 'bg-red-200' },
-  프로젝트: { bg: 'bg-blue-50', click: 'bg-blue-200' },
-  업무: { bg: 'bg-green-50', click: 'bg-green-200' },
-  일상: { bg: 'bg-yellow-50', click: 'bg-yellow-200' },
-  프론트엔드: { bg: 'bg-purple-50', click: 'bg-purple-200' },
-  백엔드: { bg: 'bg-indigo-50', click: 'bg-indigo-200' },
-  디자인: { bg: 'bg-pink-50', click: 'bg-pink-200' },
-  기획: { bg: 'bg-teal-50', click: 'bg-teal-200' },
-  데브옵스: { bg: 'bg-orange-50', click: 'bg-orange-200' },
-  '데이터 사이언스': { bg: 'bg-cyan-50', click: 'bg-cyan-200' },
-  QA: { bg: 'bg-lime-50', click: 'bg-lime-200' },
-  보안: { bg: 'bg-amber-50', click: 'bg-amber-200' },
-  '모바일 개발': { bg: 'bg-emerald-50', click: 'bg-emerald-200' },
-  '게임 개발': { bg: 'bg-fuchsia-50', click: 'bg-fuchsia-200' },
-  'AI/머신러닝': { bg: 'bg-rose-50', click: 'bg-rose-200' },
-  블록체인: { bg: 'bg-violet-50', click: 'bg-violet-200' },
-  사물인터넷: { bg: 'bg-sky-50', click: 'bg-sky-200' },
-  '클라우드 컴퓨팅': { bg: 'bg-blueGray-50', click: 'bg-blueGray-200' },
-  네트워크: { bg: 'bg-warmGray-50', click: 'bg-warmGray-200' },
-  '시스템 엔지니어링': { bg: 'bg-trueGray-50', click: 'bg-trueGray-200' },
-  '테크니컬 라이터': { bg: 'bg-coolGray-50', click: 'bg-coolGray-200' },
-  교육: { bg: 'bg-lightBlue-50', click: 'bg-lightBlue-200' },
+  시험: { bg: 'bg-red-200', click: 'bg-red-400' },
+  프로젝트: { bg: 'bg-blue-200', click: 'bg-blue-400' },
+  업무: { bg: 'bg-green-200', click: 'bg-green-400' },
+  일상: { bg: 'bg-yellow-200', click: 'bg-yellow-400' },
+  프론트엔드: { bg: 'bg-purple-200', click: 'bg-purple-400' },
+  백엔드: { bg: 'bg-indigo-200', click: 'bg-indigo-400' },
+  디자인: { bg: 'bg-pink-200', click: 'bg-pink-400' },
+  기획: { bg: 'bg-teal-200', click: 'bg-teal-400' },
+  데브옵스: { bg: 'bg-orange-200', click: 'bg-orange-400' },
+  '데이터 사이언스': { bg: 'bg-cyan-200', click: 'bg-cyan-400' },
+  QA: { bg: 'bg-lime-200', click: 'bg-lime-400' },
+  보안: { bg: 'bg-amber-200', click: 'bg-amber-400' },
+  '모바일 개발': { bg: 'bg-emerald-200', click: 'bg-emerald-400' },
+  '게임 개발': { bg: 'bg-fuchsia-200', click: 'bg-fuchsia-400' },
+  'AI/머신러닝': { bg: 'bg-rose-200', click: 'bg-rose-400' },
+  블록체인: { bg: 'bg-violet-200', click: 'bg-violet-400' },
+  사물인터넷: { bg: 'bg-sky-200', click: 'bg-sky-400' },
+  '클라우드 컴퓨팅': { bg: 'bg-blue-200', click: 'bg-blue-400' },
+  네트워크: { bg: 'bg-Gray-200', click: 'bg-Gray-400' },
+  '시스템 엔지니어링': { bg: 'bg-red-200', click: 'bg-red-400' },
+  '테크니컬 라이터': { bg: 'bg-gray-200', click: 'bg-gray-400' },
+  교육: { bg: 'bg-blue-200', click: 'bg-blue-400' },
 };
 
 const deFaultCategory = Object.keys(category);
@@ -80,7 +80,7 @@ export const selectedIdAtom = atomWithStorage<string | null>(
   storage
 );
 
-export const categoryAtom = atom<string[]>(deFaultCategory);
+export const categoryAtom = atom((get) => Object.keys(get(categoryColorAtom)));
 export const categoryColorAtom = atom(category);
 
 //delete 버튼 누른 상태인지
