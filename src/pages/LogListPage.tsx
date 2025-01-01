@@ -26,13 +26,17 @@ const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
 
   return (
     <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
-      <div className="w-80 border-2 bg-slate-300" onClick={onClickAdd}>
-        로그 추가
+      <div className="flex gap-2">
+        <div className="w-80  bg-slate-300" onClick={onClickAdd}>
+          로그 추가
+        </div>
+        <div className="bg-pink-500 whitespace-nowrap">삭제</div>
+        <div className="bg-pink-500 whitespace-nowrap">아카이브</div>
+        <div className="bg-pink-500 whitespace-nowrap">정렬</div>
       </div>
 
       <div className="flex justify-between w-full">
         <SearchBar></SearchBar>
-        <div className="bg-slate-200">옵션</div>
       </div>
       <div className="w-full h-full">
         {filteredList.map((data) => (
