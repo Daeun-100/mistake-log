@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 const Layout = () => {
   const [isShowing, setIsShowing] = useState(false);
 
@@ -34,13 +34,19 @@ const Layout = () => {
         </button>
 
         <div
-          className={` bg-red-600 transition-all duration-200 ${
+          className={`flex flex-col bg-red-600 transition-all duration-200 ${
             isShowing ? 'w-32' : 'w-0'
           }`}
         >
-          <div className="whitespace-nowrap">메뉴</div>
-          <div className="whitespace-nowrap">카테고리</div>
-          <div className="whitespace-nowrap">아카이브</div>
+          <Link to="/" className="whitespace-nowrap">
+            메뉴
+          </Link>
+          <Link to="category" className="whitespace-nowrap">
+            카테고리
+          </Link>
+          <Link to="archive" className="whitespace-nowrap">
+            아카이브
+          </Link>
         </div>
 
         <div className="flex-grow h-full bg-gray-200  transition-all duration-500">
