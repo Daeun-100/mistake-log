@@ -7,14 +7,21 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <div className="flex gap-6 bg-amber-500 ">
-        <div>이름</div>
-        <div>색</div>
-        <div>사용횟수(빈도)</div>
+      <div className="flex gap-6">
+        <div>Delete</div>
+        <div>⬆️</div>
+        <div>⬇️</div>
       </div>
-      {category.map((categoryName) => {
-        return <CategoryRow key={categoryName} categoryName={categoryName} />;
-      })}
+      <div>
+        <div className="flex gap-6 bg-amber-500 ">
+          <div>이름</div>
+          <div>색</div>
+          <div>사용횟수(빈도)</div>
+        </div>
+        {category.map((categoryName) => {
+          return <CategoryRow key={categoryName} categoryName={categoryName} />;
+        })}
+      </div>
     </div>
   );
 };
