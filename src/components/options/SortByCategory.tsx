@@ -45,6 +45,7 @@ const SortByCategory = () => {
                   handleClickCategory={handleClickCategory}
                   categoryName={name}
                   type="selector"
+                  alreadySelected={sortedCategory.includes(name)}
                 ></CategoryLabel>
               </div>
             );

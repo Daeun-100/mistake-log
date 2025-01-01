@@ -95,6 +95,7 @@ const CategoryForm: React.FC<InputProps> = ({
               categoryName={categoryName}
               handleClickCategory={handleClickCategory}
               type="selector"
+              alreadySelected={selectedCategory.includes(categoryName)}
             ></CategoryLabel>
           ))}
           <div className="bg-green-400">

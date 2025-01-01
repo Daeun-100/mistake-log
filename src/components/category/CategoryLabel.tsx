@@ -8,6 +8,7 @@ type SelectorProps = {
   categoryName: string;
   handleClickCategory: (categoryName: string) => void; // 필수
   onClickDelete?: never; // 사용 불가
+  alreadySelected: boolean;
 };
 
 type DisplayProps = {
@@ -15,6 +16,7 @@ type DisplayProps = {
   categoryName: string;
   handleClickCategory?: never; // 사용 불가
   onClickDelete: (categoryName: string) => void; // 필수
+  alreadySelected?: never; // 사용 불가
 };
 type OwnProps = SelectorProps | DisplayProps;
 
@@ -23,9 +25,10 @@ const CategoryLabel = ({
   handleClickCategory,
   onClickDelete,
   type,
+  alreadySelected,
 }: OwnProps) => {
   const categoryColor = useAtom(categoryColorAtom)[0];
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(alreadySelected);
 
   const handleClickSelector = () => {
     if (type === 'display') return;
