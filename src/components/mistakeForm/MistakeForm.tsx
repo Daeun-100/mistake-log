@@ -16,6 +16,7 @@ type OwnProps = {
 const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
   const [logList, setLogList] = useAtom(logListAtom);
   const [selectedId, setSelectedId] = useAtom(selectedIdAtom);
+  const [initialCategory, setInitialCategory] = useState<string[]>([]);
   const location = useLocation();
 
   const {
@@ -33,7 +34,8 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
     if (location.pathname.includes('detail')) {
       //상세페이지, 수정할때 불러옴
       const data = logList.find((log) => log.id === selectedId);
-
+      setInitialCategory(data?.category || []);
+      console.log(data);
       if (!data) {
         console.error('선택된 로그가 없습니다.');
         return;
@@ -88,6 +90,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           label="category"
           register={register}
           setValue={setValue}
+          initialCategory={initialCategory}
         />
 
         <TextForm

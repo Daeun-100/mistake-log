@@ -1,6 +1,6 @@
 import { set, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormFields } from '../../../types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CategoryLabel from '../../category/CategoryLabel';
 import { categoriesAtom } from '../../../atom';
 import { useAtom } from 'jotai';
@@ -11,18 +11,24 @@ type InputProps = {
   label: 'category';
   register: UseFormRegister<FormFields>;
   setValue: UseFormSetValue<FormFields>;
+  initialCategory?: string[];
 };
 
 const CategoryForm: React.FC<InputProps> = ({
   label,
   register,
   setValue,
+  initialCategory,
 }: InputProps) => {
   const [categories, setCategories] = useAtom(categoriesAtom);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [openCategory, setOpenCategory] = useState<boolean>(false);
   const [addCategory, setAddCategory] = useState<boolean>(false);
   const [addCategoryName, setAddCategoryName] = useState<string>('');
+
+  useEffect(() => {
+    setSelectedCategory(initialCategory || []);
+  }, [initialCategory, setValue]);
 
   const handleOpenCategory = () => {
     setOpenCategory(!openCategory);
@@ -37,8 +43,6 @@ const CategoryForm: React.FC<InputProps> = ({
   };
 
   const handleClickAddButton = () => {
-    // setCategoryColor로 바꿔야함
-    // setCategory([...category, addCategoryName]);
     setAddCategoryName('');
     setAddCategory(false);
   };
