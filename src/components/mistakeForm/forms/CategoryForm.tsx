@@ -2,7 +2,7 @@ import { set, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormFields } from '../../../types';
 import { useState } from 'react';
 import CategoryLabel from '../../category/CategoryLabel';
-import { categoryListAtom } from '../../../atom';
+import { categoriesAtom } from '../../../atom';
 import { useAtom } from 'jotai';
 //내용,해결방법,해결책, 느낀점
 //key : cause description solution insights
@@ -18,7 +18,7 @@ const CategoryForm: React.FC<InputProps> = ({
   register,
   setValue,
 }: InputProps) => {
-  const [category, setCategory] = useAtom(categoryListAtom);
+  const [categories, setCategories] = useAtom(categoriesAtom);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [openCategory, setOpenCategory] = useState<boolean>(false);
   const [addCategory, setAddCategory] = useState<boolean>(false);
@@ -90,13 +90,13 @@ const CategoryForm: React.FC<InputProps> = ({
           className="flex flex-wrap absolute flex-grow bg-white border-2 border-purple-300 top-6 left-16 min-w-[405px] min-h-11 max-h-44 overflow-y-auto z-50"
           style={{ width: 'calc(100% - 4rem)' }}
         >
-          {category.map((categoryName) => (
+          {categories.map(({ name }) => (
             <CategoryLabel
-              key={categoryName}
-              categoryName={categoryName}
+              key={name}
+              categoryName={name}
               handleClickCategory={handleClickCategory}
               type="selector"
-              alreadySelected={selectedCategory.includes(categoryName)}
+              alreadySelected={selectedCategory.includes(name)}
             ></CategoryLabel>
           ))}
           <div className="bg-green-400">

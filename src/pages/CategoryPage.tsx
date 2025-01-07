@@ -1,9 +1,9 @@
 import { useAtom } from 'jotai';
-import { categoryListAtom } from '../atom';
+import { categoriesAtom } from '../atom';
 import CategoryRow from '../components/category/CategoryRow';
 
 const CategoryPage = () => {
-  const [category, setCategory] = useAtom(categoryListAtom);
+  const [categories, setCategories] = useAtom(categoriesAtom);
 
   return (
     <div>
@@ -18,8 +18,8 @@ const CategoryPage = () => {
           <div>색</div>
           <div>사용횟수(빈도)</div>
         </div>
-        {category.map((categoryName) => {
-          return <CategoryRow key={categoryName} categoryName={categoryName} />;
+        {categories.map(({ name }) => {
+          return <CategoryRow key={name} categoryName={name} />;
         })}
       </div>
     </div>

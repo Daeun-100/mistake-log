@@ -26,3 +26,9 @@ export type LogItemFields = Pick<
 >;
 //DefaultValues는 FormFields에서 어떤 key든 포함 가능
 export type DefaultValues = Partial<FormFields>;
+
+export type Category = {
+  name: string;
+  bg: string;
+  click: string;
+};

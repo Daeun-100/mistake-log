@@ -13,15 +13,21 @@ const PaleteSlot: React.FC<OwnProps> = ({ bgColor }) => {
 
   const handleClickSlot = () => {
     if (recoloredCategoryName === '') return;
-    const newCategories = { ...categories };
+    const newCategories = [...categories];
     const color = bgColor.split('-')[1];
     const number = bgColor.split('-')[2];
     const newClickColor = `bg-${color}-${parseInt(number) + 100}`;
     console.log(newClickColor);
-    newCategories[recoloredCategoryName] = {
+    const index = newCategories.findIndex(
+      (category) => category.name === recoloredCategoryName
+    );
+
+    newCategories[index] = {
+      name: recoloredCategoryName,
       bg: bgColor,
       click: newClickColor,
     };
+
     setCategories(newCategories);
   };
 

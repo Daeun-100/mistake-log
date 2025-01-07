@@ -1,12 +1,12 @@
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { categoryListAtom, sortedCategoryAtom } from '../../atom';
+import { categoriesAtom, sortedCategoryAtom } from '../../atom';
 import CategoryLabel from '../category/CategoryLabel';
 import { set } from 'react-hook-form';
 
 const SortByCategory = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const [category, setCategory] = useAtom(categoryListAtom);
+  const [categories, setCategories] = useAtom(categoriesAtom);
   const [sortedCategory, setSortedCategory] = useAtom(sortedCategoryAtom);
 
   const handleClick = () => {
@@ -38,7 +38,7 @@ const SortByCategory = () => {
           <div onClick={handleClickNone} className="h-8">
             없음
           </div>
-          {category.map((name, index) => {
+          {categories.map(({ name }, index) => {
             return (
               <div key={index}>
                 <CategoryLabel

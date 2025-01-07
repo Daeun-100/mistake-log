@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai';
 import { categoriesAtom } from '../../atom';
-import { useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { Category } from '../../types';
 
 type CategoryLabelType = 'selector' | 'display';
 type SelectorProps = {
@@ -28,6 +29,18 @@ const CategoryLabel = ({
   alreadySelected,
 }: OwnProps) => {
   const categories = useAtom(categoriesAtom)[0];
+
+  const category = useMemo(() => {
+    return (
+      categories.find((category) => category.name === categoryName) || {
+        name: '',
+        bg: '',
+        click: '',
+      }
+    );
+  }, [categories]);
+
+  console.log(category);
   const [isSelected, setIsSelected] = useState(alreadySelected);
 
   const handleClickSelector = () => {
@@ -39,9 +52,7 @@ const CategoryLabel = ({
   return (
     <div
       className={`flex p-1 h-8 m-1 whitespace-nowrap hover:cursor-pointer ${
-        isSelected
-          ? categories[categoryName].click
-          : categories[categoryName].bg
+        isSelected ? category.click : category.bg
       } `}
       onClick={handleClickSelector}
     >
