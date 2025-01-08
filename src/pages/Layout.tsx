@@ -36,7 +36,7 @@ const Layout = () => {
         </button>
 
         <div
-          className={`flex flex-col bg-red-600 transition-all duration-200 overflow-hidden  ${
+          className={`flex flex-col flex-shrink-0 bg-red-600 transition-all duration-200 overflow-hidden  ${
             isShowing ? 'w-32' : 'w-0'
           }`}
         >
