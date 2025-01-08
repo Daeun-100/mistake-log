@@ -8,8 +8,10 @@ const Layout = () => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setIsShowing(true);
+        console.log('Setting to true');
       } else {
         setIsShowing(false);
+        console.log('Setting to false');
       }
     };
 
@@ -34,7 +36,7 @@ const Layout = () => {
         </button>
 
         <div
-          className={`flex flex-col bg-red-600 transition-all duration-200  bg-${
+          className={`flex flex-col bg-red-600 transition-all duration-200 overflow-hidden  ${
             isShowing ? 'w-32' : 'w-0'
           }`}
         >
