@@ -12,7 +12,7 @@ import { useState } from 'react';
 import MistakeFrom from '../components/mistakeForm/MistakeForm';
 import SearchBar from '../components/SearchBar';
 import decomposeHangul from '../utils/decomposeHangul';
-import DeleteOption from '../components/options/DeleteOption';
+import DeleteOption from '../components/options/DeleteLogOption';
 import SortByFavorite from '../components/options/SortByFavorite';
 import SortByCategory from '../components/options/SortByCategory';
 

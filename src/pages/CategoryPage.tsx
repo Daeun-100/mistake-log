@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai';
-import { categoriesAtom } from '../atom';
+import { categoriesAtom, reorderedCategoryNameAtom } from '../atom';
 import CategoryRow from '../components/category/CategoryRow';
+import UpDownCategoryOption from '../components/options/UpDownCategoryOption';
 
 const CategoryPage = () => {
   const [categories, setCategories] = useAtom(categoriesAtom);
@@ -9,8 +10,8 @@ const CategoryPage = () => {
     <div>
       <div className="flex gap-6">
         <div>Delete</div>
-        <div>⬆️</div>
-        <div>⬇️</div>
+        <UpDownCategoryOption type="up" />
+        <UpDownCategoryOption type="down" />
       </div>
       <div>
         <div className="flex gap-6 bg-amber-500 ">

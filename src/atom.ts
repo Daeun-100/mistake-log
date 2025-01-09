@@ -93,4 +93,8 @@ export const isSortingByFavoriteAtom = atom<boolean>(false);
 //sort by category
 export const sortedCategoryAtom = atom<string[]>([]);
 
+//색 변경하는 카테고리 이름
 export const recoloredCategoryNameAtom = atom<string>('');
+
+//순서 변경하는 카테고리 이름
+export const reorderedCategoryNameAtom = atom<string>('');

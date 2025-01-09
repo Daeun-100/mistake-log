@@ -3,10 +3,12 @@ import {
   logListAtom,
   categoriesAtom,
   recoloredCategoryNameAtom,
+  reorderedCategoryNameAtom,
 } from '../../atom';
 import { useState, useRef, useEffect, useMemo } from 'react';
 import Palete from '../palete/Palete';
 import { Category } from '../../types';
+import { set } from 'react-hook-form';
 
 type OwnProps = {
   categoryName: string;
@@ -17,6 +19,9 @@ const CategoryRow: React.FC<OwnProps> = ({ categoryName }) => {
   const [logList, setLogList] = useAtom(logListAtom);
   const [recoloredCategoryName, setRecoloredCategoryNameAtom] = useAtom(
     recoloredCategoryNameAtom
+  );
+  const [reorderedCategoryName, setReorderedCategoryNameAtom] = useAtom(
+    reorderedCategoryNameAtom
   );
   const [newCategoryName, setNewCategoryName] = useState(categoryName);
   const [isRenaming, setIsRenaming] = useState(false);
@@ -87,9 +92,13 @@ const CategoryRow: React.FC<OwnProps> = ({ categoryName }) => {
     }
   };
 
+  const handleClickCheckBox = () => {
+    setReorderedCategoryNameAtom(categoryName);
+  };
+
   return (
     <div className="flex gap-4">
-      <input type="checkbox"></input>
+      <input type="checkbox" onClick={handleClickCheckBox}></input>
       <div className="flex gap-2">
         {isRenaming ? (
           <input
