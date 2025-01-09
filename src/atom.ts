@@ -19,7 +19,7 @@ const mockDatalist: FormFields[] = [
     id: 'fdgfghfgh',
     timestamp: new Date('2021-09-02'),
     title: 'title2dfg',
-    category: ['디자인', '기술'],
+    category: ['디자인', '프론트엔드'],
     favorite: false,
     description: 'description2',
     solution: 'solution2',
