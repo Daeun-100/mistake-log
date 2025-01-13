@@ -3,6 +3,7 @@ import { useAtom } from 'jotai';
 import { logListAtom } from '../atom';
 import { useState } from 'react';
 import MistakeFrom from '../components/mistakeForm/MistakeForm';
+import LogListLoader from '../api/LogListLoader';
 
 type OwnProps = {
   onClickAdd: () => void;
@@ -14,6 +15,7 @@ const LogListPage: React.FC<OwnProps> = ({ onClickAdd }) => {
 
   return (
     <div className="flex flex-col items-center gap-4 p-4 pt-6 w-full">
+      <LogListLoader />
       <div className="w-80 border-2 bg-slate-300" onClick={onClickAdd}>
         로그 추가
       </div>

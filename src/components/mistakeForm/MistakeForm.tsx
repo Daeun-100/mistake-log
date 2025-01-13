@@ -3,7 +3,6 @@ import TextForm from './TextForm';
 import { DefaultValues, FormFields } from '../../types';
 import TitleForm from './TitleForm';
 import CategoryForm from './CategoryForm';
-import LabelRangeForm from './LabelRangeForm';
 import { logListAtom, selectedIdAtom } from '../../atom';
 import { useAtom } from 'jotai';
 import { useLocation } from 'react-router-dom';
@@ -18,7 +17,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
   const [logList, setLogList] = useAtom(logListAtom);
   const [selectedId, setSelectedId] = useAtom(selectedIdAtom);
   const location = useLocation();
-
+  
   const {
     register,
     handleSubmit,
@@ -82,10 +81,6 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           register={register}
           required="제목은 필수입니다."
         />
-        <div className="flex gap-2">
-          <LabelRangeForm label="severity" register={register} />
-          <LabelRangeForm label="frequency" register={register} />
-        </div>
 
         <CategoryForm label="category" register={register} />
 
@@ -100,7 +95,7 @@ const MistakeForm: React.FC<OwnProps> = ({ onClickSubmit }) => {
           required="해결방법은 필수입니다."
         />
         <TextForm
-          label="insights"
+          label="insight"
           register={register}
           required="느낀점은 필수입니다."
         />

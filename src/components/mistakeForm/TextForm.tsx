@@ -1,11 +1,11 @@
 import { Path, UseFormRegister } from 'react-hook-form';
-import { TextFormFields, FormFileds } from '../../types';
+import { TextFormFields, FormFields } from '../../types';
 //내용,해결방법,해결책, 느낀점
-//key :  description solution insights
+//key :  description solution insight
 
 type InputProps = {
   label: Path<TextFormFields>;
-  register: UseFormRegister<FormFileds>;
+  register: UseFormRegister<FormFields>;
   required: string;
 };
 
@@ -15,7 +15,7 @@ const heightVariant = {
 };
 
 const matchHeight = (label: Path<TextFormFields>) => {
-  //description solution 은 medium insights는 small
+  //description solution 은 medium insight는 small
   if (label === 'description' || label === 'solution') {
     return heightVariant.medium;
   }

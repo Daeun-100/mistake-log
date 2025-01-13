@@ -1,7 +1,7 @@
 import { UseFormRegister } from 'react-hook-form';
 import { FormFields } from '../../types';
 //내용,해결방법,해결책, 느낀점
-//key : cause description solution insights
+//key : cause description solution insight
 
 type InputProps = {
   label: 'category';

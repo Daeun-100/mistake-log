@@ -13,14 +13,12 @@ const LogDetail: React.FC = () => {
   return (
     <div className="bg-slate-300 w-full h-full p-4">
       <div className="bg-slate-100 p-4">
-        <div>날짜 : {seletedLog.timestamp.toLocaleDateString()}</div>
+        <div>날짜 : {seletedLog.timestamp.toLocaleString()}</div>
         <div>제목 : {seletedLog.title}</div>
         <div>카테고리 : {seletedLog.category}</div>
-        <div>심각성 : {seletedLog.severity}</div>
-        <div>빈도 : {seletedLog.frequency}</div>
         <div>내용 : {seletedLog.description}</div>
         <div>해결방법 : {seletedLog.solution}</div>
-        <div>느낀점 : {seletedLog.insights}</div>
+        <div>느낀점 : {seletedLog.insight}</div>
       </div>
     </div>
   );
